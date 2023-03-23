@@ -65,7 +65,7 @@ def customer():
                 print("Enter M for menu.")
             for_exit += 1
 
-            # ****************************
+            # ******************************
 
         # bill calculation
 
