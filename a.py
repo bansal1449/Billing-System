@@ -64,7 +64,45 @@ def customer():
                 print("Enter E for no more order.")
                 print("Enter M for menu.")
             for_exit += 1
-       #************
+
+            # ****************************
+
+        # bill calculation
+
+        total_Amount = 0  # 0 means there is no entry charge
+        for i in range(len(order_list)):
+            total_Amount += final_Menu[order_list[i]] * number_of_items[i]
+
+        print('''
+
+
+        ''')
+        print("Name    :     ", name)
+        print("Contact No. : ", contact)
+
+        # Bill______
+
+        for i in range(len(order_list)):
+            print(order_list[i], " : ", final_Menu[order_list[i]] * number_of_items[i], sep="")
+
+        # discount_____
+        if total_Amount < 500:
+            print("sorry, you didn't get any discount.")
+            print("your total amount is : ", total_Amount)
+        elif total_Amount > 500 and total_Amount < 600:
+            print("Shop for ", (600 - total_Amount), "more for 10% discount.")
+            print("Total amount is : ", total_Amount)
+        elif total_Amount > 600 and total_Amount < 800:
+            print("Congratulations! ", name, ", you got 10% discount.\nShop for ", (800 - total_Amount),
+                  "more for 12%( 2% extra) discount.")
+            print("Total amount is : ", total_Amount - (total_Amount / 100) * 10)
+        else:
+            print("Congratulations! ", name, " you got maximum discount of 12%.")
+            print("Total amount is : ", total_Amount - (total_Amount / 100) * 12)
+
+    menuPrint()
+
+
 def admin():
     print("""
                 👍You can change or add items and price of your items.👍
@@ -85,8 +123,10 @@ def admin():
 
 
 admin_custome = input("""You are admin or customer : 
+
                 1.admin
                 2.customer    
+
         Enter here : """)
 
 admin_custome_modified = admin_custome[0].upper() + admin_custome[1:].lower()
